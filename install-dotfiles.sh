@@ -1,37 +1,22 @@
 #!/bin/bash
+set -e
 
-ORIGINAL_DIR=$(pwd)
 REPO_URL="https://github.com/gus-abreu/dotfiles"
 REPO_NAME="dotfiles"
 
-is_stow_installed() {
-  pacman -Qi "stow" &> /dev/null
-}
-
-if ! is_stow_installed; then
-  echo "Install stow first"
-  exit 1
-fi
+# Verify stow is installed
+pacman -Qi stow &> /dev/null || { echo "Install stow first"; exit 1; }
 
 cd ~
 
-# Check if the repository already exists
-if [ -d "$REPO_NAME" ]; then
-  echo "Repository '$REPO_NAME' already exists. Skipping clone"
-else
+# Clone if needed
+if [ ! -d "$REPO_NAME" ]; then
   git clone "$REPO_URL"
 fi
 
-# Check if the clone was successful
-if [ $? -eq 0 ]; then
-  echo "removing old configs"
-  mv ~/.config/hypr ~/.config/hyper.bak
-
-  cd "$REPO_NAME"
-  stow hypr
-  hyprctl reload
-  sudo stow -t / firefox
-else
-  echo "Failed to clone the repository."
-  exit 1
-fi
+# Backup and stow configs
+[ -d ~/.config/hypr ] && mv ~/.config/hypr ~/.config/hypr.bak
+cd "$REPO_NAME"
+stow hypr
+hyprctl reload
+sudo stow -t / firefox
