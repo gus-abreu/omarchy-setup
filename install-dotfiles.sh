@@ -25,10 +25,11 @@ fi
 # Check if the clone was successful
 if [ $? -eq 0 ]; then
   echo "removing old configs"
-  rm -rf ~/.config/hypr
+  mv ~/.config/hypr ~/.config/hyper.bak
 
   cd "$REPO_NAME"
   stow hypr
+  hyprctl reload
   sudo stow -t / firefox
 else
   echo "Failed to clone the repository."

@@ -16,4 +16,8 @@ sudo dd bs=4M if=omarchy-3.2.3-2.iso of=/dev/sda status=progress oflag=sync
 
 `./setup.sh`
 
+`gh auth login`
+
+`gh auth setup-git`
+
 https://www.youtube.com/watch?v=d23jFJmcaMI
