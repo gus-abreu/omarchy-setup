@@ -19,4 +19,3 @@ fi
 cd "$REPO_NAME"
 stow hypr
 hyprctl reload
-sudo stow -t / firefox
