@@ -16,6 +16,8 @@ fi
 
 # Backup and stow configs
 [ -d ~/.config/hypr ] && mv ~/.config/hypr ~/.config/hypr.bak
+[ -f ~/.ssh/config ] && mv ~/.ssh/config ~/.ssh/config.bak
 cd "$REPO_NAME"
 stow hypr
+stow ssh
 hyprctl reload
