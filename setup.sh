@@ -14,6 +14,7 @@ set -e
 ./install-uv.sh
 ./install-audio.sh
 ./install-fingerprint.sh
+./install-battery.sh
 
 ./install-dotfiles.sh
 
