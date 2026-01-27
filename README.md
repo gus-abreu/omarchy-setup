@@ -37,3 +37,6 @@ sensors
 # Mic adjustment
 pavucontrol  # Input Devices > Internal Microphone > ~80-100%
 ```
+
+
+run omarchy-setup-fingerprint manually to enroll fingerprints

@@ -13,6 +13,7 @@ set -e
 #./install-thunderbird.sh
 ./install-uv.sh
 ./install-audio.sh
+./install-fingerprint.sh
 
 ./install-dotfiles.sh
 
