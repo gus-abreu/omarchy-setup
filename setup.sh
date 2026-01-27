@@ -10,8 +10,9 @@ set -e
 ./install-firefox.sh
 ./install-zed.sh
 ./install-claude.sh
-./install-thunderbird.sh
+#./install-thunderbird.sh
 ./install-uv.sh
+./install-audio.sh
 
 ./install-dotfiles.sh
 
