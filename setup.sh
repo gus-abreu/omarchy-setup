@@ -10,11 +10,11 @@ set -e
 ./install-firefox.sh
 ./install-zed.sh
 ./install-claude.sh
-#./install-thunderbird.sh
 ./install-uv.sh
 ./install-audio.sh
 ./install-fingerprint.sh
 ./install-battery.sh
+./install-ticktick.sh
 
 ./install-dotfiles.sh
 
