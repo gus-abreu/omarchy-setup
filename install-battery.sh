@@ -30,4 +30,15 @@ sudo tlp start
 
 # Lenovo conservation mode (limit charge to ~60% for battery longevity)
 echo 1 | sudo tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode
+
+echo ""
 echo "TLP installed and configured. Expected idle power: 6-9W."
+echo ""
+echo "TLP Commands:"
+echo "  tlp-stat -s   Show current status (AC/battery mode)"
+echo "  tlp bat       Force battery mode"
+echo "  tlp ac        Force AC/performance mode"
+echo "  tlp start     Auto-detect and apply settings"
+echo ""
+echo "TLP switches automatically when plugging/unplugging."
+echo "Config: /etc/tlp.d/01-battery.conf"
