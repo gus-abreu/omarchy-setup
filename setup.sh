@@ -15,6 +15,7 @@ set -e
 ./install-fingerprint.sh
 ./install-battery.sh
 ./install-ticktick.sh
+./install-qgis.sh
 
 ./install-dotfiles.sh
 
