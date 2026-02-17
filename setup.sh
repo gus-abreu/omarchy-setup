@@ -16,6 +16,7 @@ set -e
 ./install-battery.sh
 ./install-ticktick.sh
 ./install-qgis.sh
+./install-beekeeper.sh
 
 ./install-dotfiles.sh
 
