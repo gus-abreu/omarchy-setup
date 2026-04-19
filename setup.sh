@@ -17,6 +17,7 @@ set -e
 ./install-ticktick.sh
 ./install-qgis.sh
 ./install-beekeeper.sh
+./install-filen.sh
 
 ./install-dotfiles.sh
 
