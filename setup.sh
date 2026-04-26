@@ -18,6 +18,7 @@ set -e
 ./install-qgis.sh
 ./install-beekeeper.sh
 ./install-filen.sh
+./install-calibre.sh
 
 ./install-dotfiles.sh
 
