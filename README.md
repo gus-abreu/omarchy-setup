@@ -39,4 +39,30 @@ pavucontrol  # Input Devices > Internal Microphone > ~80-100%
 ```
 
 
+## Audio (AirPods / Bluetooth headset mic)
+
+Symptom: on calls the AirPod mic gives robotic/garbled audio (dmesg shows
+`SCO packet for unknown connection handle`). Cause: the MediaTek Bluetooth
+chip (`btmtk`) can't handle the **LC3 HFP codec** PipeWire auto-picks. Only
+mSBC/CVSD work.
+
+Fix — disable LC3 so WirePlumber falls back to mSBC (and auto-switches to
+headset mode on calls, back to A2DP hi-fi for music):
+
+`~/.config/wireplumber/wireplumber.conf.d/51-bluetooth-airpods-hfp.conf`
+```
+monitor.bluez.properties = {
+  bluez5.codecs = [ aac sbc_xq sbc msbc cvsd ]   # note: no lc3_swb / lc3_a127
+  bluez5.enable-msbc = true
+  bluez5.enable-sbc-xq = true
+}
+```
+Then `systemctl --user restart wireplumber pipewire pipewire-pulse`, and once
+select the mSBC headset profile so it's remembered (pavucontrol > Configuration,
+or `pactl set-card-profile <bluez_card...> headset-head-unit`).
+
+Note: AirPods can't do hi-fi output + mic at the same time (Bluetooth A2DP vs
+HFP) — call output is mono by design. In Google Meet, set mic AND speaker to the
+AirPods (it remembers per browser). Test tools: `pavucontrol`, `omarchy launch audio`.
+
 run omarchy-setup-fingerprint manually to enroll fingerprints
